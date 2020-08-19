@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity(), MovieInterface.MovieView {
        super.onCreate(savedInstanceState)
        setContentView(R.layout.activity_main)
 
-
         getMovieDetails()
         listRecyclerView!!.layoutManager = LinearLayoutManager(this)
 
