@@ -1,4 +1,4 @@
-package com.example.myapplication.feature.movies.adapter
+package com.example.myapplication.mvp.model.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.mvp.model.api.modelclass.MovieDetails
+import com.example.myapplication.mvp.model.modelclass.MovieDetails
 
 class MovieGenreListAdapter(
     private var movieDetails: MovieDetails

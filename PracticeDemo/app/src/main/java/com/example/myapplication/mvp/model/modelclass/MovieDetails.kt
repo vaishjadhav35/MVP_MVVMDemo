@@ -1,4 +1,4 @@
-package com.example.myapplication.mvp.model.api.modelclass
+package com.example.myapplication.mvp.model.modelclass
 
 import com.google.gson.annotations.SerializedName
 
@@ -6,18 +6,20 @@ import com.google.gson.annotations.SerializedName
 data class MovieDetails(
 
     @SerializedName("Title")
-    val title: String? = null,
+    val title: String,
 
     @SerializedName("Year")
-    val year: String? = null,
+    val year: String,
 
     @SerializedName("Rated")
-    val rated: String? = null,
+    val rated: String,
 
     @SerializedName("Runtime")
-    val runtime: String? = null,
+    val runtime: String,
 
-    @field:SerializedName("Genre")
+    @SerializedName("Genre")
     val genre: ArrayList<String>
+
+
 )
 

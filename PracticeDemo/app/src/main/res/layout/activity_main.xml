@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.movies.activity.MainActivity">
-
+    tools:context=".mvp.view.MainActivity">
 
      <TextView
          android:id="@+id/movieTitle"
@@ -69,14 +68,13 @@
          app:layout_constraintTop_toBottomOf="@+id/movieRating" />
 
      <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listRecyclerView"
+         android:id="@+id/listRecyclerView"
          android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movieRuntime"
+         android:layout_height="wrap_content"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/movieRuntime"
          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    />
-
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".common.base.activity.BaseActivity"></activity>
-        <activity android:name=".feature.movies.activity.MainActivity">
+        <activity android:name=".mvp.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

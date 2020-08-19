@@ -1,18 +1,15 @@
 package com.example.myapplication.mvp.`interface`
 
-interface MovieInterface {
+import android.view.View
+import com.example.myapplication.mvp.model.modelclass.MovieDetails
 
-    interface movieModel {
-        fun getMovie()
+class  MovieInterface {
+
+    interface MovieView {
+        fun updateViewData(movieDetails: MovieDetails)
     }
-
-    interface movieView {
-        fun updateViewData()
-
-    }
-
-    interface moviePresenter {
+    interface MoviePresenter {
         fun showMovie()
-
+        fun attachView(view: MovieInterface.MovieView)
     }
 }

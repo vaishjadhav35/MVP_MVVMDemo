@@ -1,62 +1,49 @@
-package com.example.myapplication.feature.movies.activity
+package com.example.myapplication.mvp.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.feature.movies.adapter.MovieGenreListAdapter
-import com.example.myapplication.feature.movies.MovieDetails
-import com.example.myapplication.util.api.Api
-import com.example.myapplication.util.api.RestApi
+import com.example.myapplication.mvp.`interface`.MovieInterface
+import com.example.myapplication.mvp.model.adapter.MovieGenreListAdapter
+import com.example.myapplication.mvp.model.modelclass.MovieDetails
+import com.example.myapplication.mvp.presenter.MoviePresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
-    private var mApi: Api? = null
-    private var mAdapter:MovieGenreListAdapter?=null
-
+class MainActivity : AppCompatActivity(), MovieInterface.MovieView {
+    private var genreListAdapter: MovieGenreListAdapter? = null
+    private var presenter: MoviePresenter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       super.onCreate(savedInstanceState)
+       setContentView(R.layout.activity_main)
 
-        mApi = RestApi.client.create(Api::class.java)
 
+        getMovieDetails()
         listRecyclerView!!.layoutManager = LinearLayoutManager(this)
 
-        GetMovieDetails()
-    }
-    private fun GetMovieDetails() {
-        val call = mApi!!.fetchMovieDetails("tagged");
-        call.enqueue(object : Callback<MovieDetails> {
-            override fun onResponse(call: Call<MovieDetails>, response: Response<MovieDetails>) {
-
-                var movieDetails: MovieDetails =response.body()!!
-                Log.d("response",movieDetails.toString())
-
-                movieTitle.text = "Title: ${movieDetails.title}"
-                movieYear.text ="Year: ${movieDetails.year}"
-                movieRating.text ="Rated: ${movieDetails.rated}"
-                movieRuntime.text ="Runtime: ${movieDetails.runtime}"
-
-
-                mAdapter = MovieGenreListAdapter(movieDetails)
-                listRecyclerView!!.adapter = mAdapter
-                mAdapter!!.notifyDataSetChanged()
-
-        }
-
-
-            override fun onFailure(call: Call<MovieDetails>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
     }
 
-     companion object {
-            private val TAG = MainActivity::class.java.simpleName
-        }
+    private fun getMovieDetails() {
+        presenter = MoviePresenter()
+        presenter!!.attachView(this)
+        presenter!!.showMovie()
+
+    }
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+    }
+
+    override fun updateViewData(movieDetails: MovieDetails) {
+        movieTitle.text = "Title: ${movieDetails.title}"
+        movieYear.text = "Year: ${movieDetails.year}"
+        movieRating.text = "Rated: ${movieDetails.rated}"
+        movieRuntime.text = "Runtime: ${movieDetails.runtime}"
+
+        genreListAdapter =
+            MovieGenreListAdapter(
+                movieDetails
+            )
+        listRecyclerView!!.adapter = genreListAdapter
+        genreListAdapter!!.notifyDataSetChanged()
+    }
 }
