@@ -1,4 +1,4 @@
 package com.example.myapplication.feature.movies.state
 
-class MovieState {
+sealed class MovieState {
 }

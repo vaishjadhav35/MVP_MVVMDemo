@@ -1,4 +1,5 @@
 package com.example.myapplication.feature.movies.intent
 
-class MovieIntent {
+ sealed class MovieIntent {
+
 }

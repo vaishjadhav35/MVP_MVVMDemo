@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.feature.movies.MovieDetails
 
-class MovieListAdapter(
-    private var movieDetails: MovieDetails,
-    val context: Context
+class MovieGenreListAdapter(
+    private var movieDetails: MovieDetails
 ):
     RecyclerView.Adapter<ListItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
@@ -31,16 +30,13 @@ class MovieListAdapter(
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
         return holder.bind(movieDetails.genre[position])
 
-
     }
 }
 
 class ListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    private val genre: TextView = itemView.findViewById(R.id.movie_genre)
-
-
+    private val genre: TextView = itemView.findViewById(R.id.movieGenre)
     fun bind(movie: String) {
-        genre.text = movie
+        genre.text = "Genre: ${movie}"
 
     }
 }
