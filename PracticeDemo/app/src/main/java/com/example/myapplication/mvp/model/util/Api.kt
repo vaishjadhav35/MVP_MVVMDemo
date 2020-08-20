@@ -9,6 +9,6 @@ import retrofit2.http.Query
 interface Api {
 
     @GET(Constant.MOVIE)
-    fun fetchMovieDetails(@Query("tagged") tags: String): Call<MovieDetails>
+    fun fetchMovieDetails(@Query("tagged") tags: String): Call<Any>
 }
 
