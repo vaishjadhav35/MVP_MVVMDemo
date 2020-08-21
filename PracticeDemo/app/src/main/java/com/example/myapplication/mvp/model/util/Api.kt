@@ -10,5 +10,7 @@ interface Api {
 
     @GET(Constant.MOVIE)
     fun fetchMovieDetails(@Query("tagged") tags: String): Call<Any>
+    @GET(Constant.MOVIE)
+    fun getMovieDetails(@Query("tagged") tags: String): Call<MovieDetails>
 }
 

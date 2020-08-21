@@ -2,7 +2,7 @@ package com.example.myapplication.mvp.`interface`
 
 import com.example.myapplication.mvp.model.modelclass.MovieDetails
 
-class  MovieInterface {
+ class  MovieInterface {
 
     interface MovieView {
         fun updateViewData(movieDetails: MovieDetails)

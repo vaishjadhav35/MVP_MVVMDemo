@@ -15,7 +15,7 @@ class MoviePresenter(): MovieInterface.MoviePresenter,NetworkApi(), MovieInterfa
 
     override fun showMovie(){
         api = RestApi.client.create(Api::class.java)
-        this.networkCall(this,api!!.fetchMovieDetails("tagged"),MovieDetails::class.java)
+       this.networkCall(this,api!!.fetchMovieDetails("tagged"),MovieDetails::class.java)
     }
 
     override fun response(any: Any) {
@@ -29,4 +29,8 @@ class MoviePresenter(): MovieInterface.MoviePresenter,NetworkApi(), MovieInterfa
         this.movieView=view
     }
 
+  /*  override fun responseApi(response: Any) {
+        TODO("Not yet implemented")
+    }
+*/
 }

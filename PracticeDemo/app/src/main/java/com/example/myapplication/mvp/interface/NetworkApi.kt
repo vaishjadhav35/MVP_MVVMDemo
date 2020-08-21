@@ -1,5 +1,6 @@
 package com.example.myapplication.mvp.`interface`
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.mvp.model.modelclass.MovieDetails
 import com.example.myapplication.mvp.model.util.Api
 import com.example.myapplication.mvp.model.util.RestApi
@@ -12,17 +13,17 @@ import retrofit2.Response
 
 
 open class NetworkApi() {
-
 fun networkCall(
-                getRetrofitResponse: MovieInterface.GetRetrofitResponse,
+               getRetrofitResponse: MovieInterface.GetRetrofitResponse,
 
-call:Call<Any>,
+                call:Call<Any>,
                 resultClass: Class<*>){
 
     call.enqueue(object : Callback<Any> {
         override fun onResponse(call: Call<Any>, response: Response<Any>) {
 
-            getRetrofitResponse.response(getResultObj(response.body()!!,resultClass))
+        getRetrofitResponse.response(getResultObj(response.body()!!,resultClass))
+           // responseApi(getResultObj(response.body()!!,resultClass))
         }
 
         override fun onFailure(call: Call<Any>, t: Throwable) {
@@ -47,4 +48,7 @@ call:Call<Any>,
             return resultObj
         }
     }
+
+    //abstract fun responseApi(response:Any)
+
 }
