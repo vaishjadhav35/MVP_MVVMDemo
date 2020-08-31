@@ -9,10 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.mvp.`interface`.MovieInterface
 import com.example.myapplication.mvp.model.adapter.MovieGenreListAdapter
-import com.example.myapplication.mvp.model.modelclass.MovieDetails
-import com.example.myapplication.mvp.presenter.MoviePresenter
 import com.example.myapplication.mvvm.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_movie.*
 
